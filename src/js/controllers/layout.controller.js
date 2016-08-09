@@ -1,4 +1,4 @@
-function LayoutController () {
+function LayoutController ($http, SERVER, $cookies, $state) {
 
 // Sets up this as vm.
 	let vm = this;
@@ -6,6 +6,8 @@ function LayoutController () {
 	vm.login = false;
 // Adds the function to the vm object.
 	vm.showLogin = showLogin;
+// Adds register function to vm object
+	vm.loginUser = loginUser;
 
 // Defines the function and hoists to top of file.
 	function showLogin(){
@@ -19,9 +21,25 @@ function LayoutController () {
 		}
 	}
 
+// ------------------
+
+	function loginUser (user) {
+		console.log(user);
+		// Testing to internal Adonis server
+		$http.post('http://localhost:3333/login', user).then( res => {
+
+		// ************ Following line for production ************
+		// $http.post(SERVER.URL + 'login').then( res => {
+				console.log(res);
+	      $cookies.put('access_token', res.data.access_token);
+	      $state.go('root.host');
+	    });
+	  }
+// ------------------
+
 
 
 }
 
-LayoutController.$inject = [];
+LayoutController.$inject = ['$http', 'SERVER', '$cookies', '$state'];
 export { LayoutController };
