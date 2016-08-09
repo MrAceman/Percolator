@@ -4,19 +4,20 @@ import 'angular-cookies';
 
 
 //import SERVER
-import { WEALTHSERVER } from './servers/wealth.server';
+// import { WEALTHSERVER } from './servers/wealth.server';
 
 //import config
 import { config } from './utilities/config';
 
 //import constants
-import { headers } from './credentials/wealth.credentials';
+// import { headers } from './credentials/wealth.credentials';
+import { serverConstant } from './servers/javahuddle.server';
 
 //import services
-import { WealthService } from './services/wealth.service';
+// import { WealthService } from './services/wealth.service';
 
 //import Controllers
-import { WealthController } from './controllers/wealth.controller';
+// import { WealthController } from './controllers/wealth.controller';
 import { LayoutController } from './controllers/layout.controller';
 import { HomeController } from './controllers/home.controller';
 import { CreateAccountController } from './controllers/create.account.controller';
@@ -31,11 +32,12 @@ import { EventCreateController } from './controllers/event.create.controller';
 
 angular
 	.module('app', ['ui.router', 'ngCookies'])
-	.constant('WEALTHSERVER', WEALTHSERVER)
+	// .constant('WEALTHSERVER', WEALTHSERVER)
 	.config(config)
-	.constant('headers', headers)
-	.service('WealthService', WealthService)
-	.controller('WealthController', WealthController)
+	// .constant('headers', headers)
+	.constant('SERVER', serverConstant)
+	// .service('WealthService', WealthService)
+	// .controller('WealthController', WealthController)
 	.controller('LayoutController', LayoutController)
 	.controller('HomeController', HomeController)
 	.controller('CreateAccountController', CreateAccountController)
